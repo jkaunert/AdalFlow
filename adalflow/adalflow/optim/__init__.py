@@ -11,6 +11,13 @@ from .trainer.adal import AdalComponent
 from adalflow.utils.registry import EntityMapping
 from .optimizer import DemoOptimizer, TextOptimizer
 from .gradient import Gradient, GradientContext
+from .optimize_anything import (
+    optimize_anything,
+    log,
+    EngineConfig,
+    GEPAConfig,
+    OptimizeAnythingResult,
+)
 
 
 __all__ = [
@@ -32,6 +39,11 @@ __all__ = [
     "TextOptimizer",
     "Gradient",
     "GradientContext",
+    "optimize_anything",
+    "log",
+    "EngineConfig",
+    "GEPAConfig",
+    "OptimizeAnythingResult",
 ]
 
 for name in __all__:
