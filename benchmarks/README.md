@@ -1,3 +1,66 @@
+# Benchmarks
+
 Benchmarking is an integral development part of the project.
 
-Contributors are encouraged to write benchmarks for their code, besides of the unit tests in `tests/` directory.
+Contributors are encouraged to write benchmarks for their code, in addition to unit tests in the `tests/` directory.
+
+## Available benchmark areas
+
+- `optimize_anything/` — GEPA / optimize-anything style benchmark scaffolds.
+- `arc_bench/` — ARC-Bench-style smoke benchmark harness for autonomous research-agent prototypes.
+
+## ARC-Bench-style smoke benchmark
+
+The `arc_bench/` benchmark is a lightweight, local smoke benchmark for testing AdalFlow research-agent orchestration patterns. It currently supports:
+
+1. A simple linear autonomous-research demo.
+2. An OpenEvolve-style evolutionary research loop demo.
+
+The evolutionary loop models:
+
+```text
+seed candidate
+→ mutate
+→ execute / repair
+→ evaluate
+→ reflect
+→ archive
+→ select best
+→ repeat
+→ final report
+```
+
+Run the deterministic evolution smoke benchmark:
+
+```bash
+python benchmarks/arc_bench/run_adalflow_smoke.py \
+  --mode evolution \
+  --max-iterations 5 \
+  --topics benchmarks/arc_bench/topics_smoke.jsonl \
+  --output artifacts/arc_bench/adalflow_evolution_smoke
+```
+
+Generate a Markdown report:
+
+```bash
+python benchmarks/arc_bench/report.py \
+  --input artifacts/arc_bench/adalflow_evolution_smoke \
+  --output artifacts/arc_bench/adalflow_evolution_smoke_report.md
+```
+
+Optional LLM-backed mode replaces the seed, mutation, reflection, and final report-writing components with AdalFlow `Generator` components while keeping execution and evaluation deterministic:
+
+```bash
+export OPENAI_API_KEY="..."
+
+python benchmarks/arc_bench/run_adalflow_smoke.py \
+  --mode evolution \
+  --use-llm \
+  --provider openai \
+  --model gpt-4o-mini \
+  --max-iterations 5 \
+  --topics benchmarks/arc_bench/topics_smoke.jsonl \
+  --output artifacts/arc_bench/adalflow_evolution_llm_smoke
+```
+
+> Note: this benchmark is not a verified comparison against AutoResearchClaw. A valid comparison requires running both systems on the same topics, model, hardware, timeout, budget, and scoring rubric.
