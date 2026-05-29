@@ -1,0 +1,5 @@
+{"topic_id": "ml_001", "domain": "ml", "topic": "Investigate whether prompt self-reflection improves parameter-efficient tuning stability on small reasoning tasks."}
+{"topic_id": "ml_002", "domain": "ml", "topic": "Evaluate self-healing code generation loops for automatically repairing failed ML experiment scripts."}
+{"topic_id": "stats_001", "domain": "statistics", "topic": "Compare bootstrap confidence intervals with Bayesian credible intervals for small-sample simulation studies."}
+{"topic_id": "bio_001", "domain": "biology", "topic": "Design a computational experiment to test whether pathway-level summaries improve gene expression classification robustness."}
+{"topic_id": "quantum_001", "domain": "quantum", "topic": "Explore whether noise-aware variational circuit ansatz selection improves robustness under simulated depolarizing noise."}
